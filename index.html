@@ -7,10 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="container">
+<body class="container mx-auto">
 
     <header>
-        <nav class="w-11/12 mx-auto py-3 flex justify-between items-center">
+        <nav class=" py-3 flex justify-between items-center">
             <!-- Logo Section -->
             <div class="flex gap-2 items-center">
                 <img src="images/logo.webp" alt="Logo" class="w-8 md:w-10">
@@ -56,6 +56,45 @@
             </div>
         </nav>
     </header>
+
+    <main>
+        <section id="banner" class="mt-8 md:mt-12 lg:mt-16">
+            <div class="container mx-auto px-4 md:px-8 lg:px-12 max-w-6xl">
+                <!-- Text Content -->
+                <div class="text-center space-y-4 md:space-y-6">
+                    <h3 class="text-lg md:text-xl font-semibold text-[#7d7d7d] tracking-wide">
+                        Bringing Families Together ❤️‍🔥
+                    </h3>
+                    
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight md:leading-snug">
+                        Your Path to Adoption<br class="hidden md:block">
+                        Starts Here
+                    </h2>
+        
+                    <p class="text-[#7d7d7d] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                        Discover lifelong companionship through our carefully curated adoption process. 
+                        We help you find pets that match your lifestyle .
+                    </p>
+        
+                    <button class="btn px-8   text-sm md:text-base bg-[#0e7a81] text-white hover:bg-[#0b5f65]  transition-all duration-300 transform hover:scale-105">
+                        View More
+                    </button>
+                </div>
+        
+                <!-- Image Section -->
+                <div class="mt-10 md:mt-14 lg:mt-16 flex justify-center">
+                    <div class="w-full max-w-4xl ">
+                        <img 
+                            src="images/pet.webp" 
+                            alt="Happy adopted pet with family" 
+                            class="w-full h-auto object-cover"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 
     
