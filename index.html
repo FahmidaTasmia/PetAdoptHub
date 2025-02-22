@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetAdoptHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="container">
+
+    <header>
+        <nav class="w-11/12 mx-auto py-3 flex justify-between items-center">
+            <!-- Logo Section -->
+            <div class="flex gap-2 items-center">
+                <img src="images/logo.webp" alt="Logo" class="w-8 md:w-10">
+                <h4 class="text-xl md:text-2xl font-bold">peddy</h4>
+            </div>
+        
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex gap-6 text-lg font-semibold">
+                <a href="#" class="hover:text-gray-600">Home</a>
+                <a href="#" class="hover:text-gray-600">Shop</a>
+                <a href="#" class="hover:text-gray-600">Contact</a>
+            </div>
+        
+            <!-- Mobile Menu Button + user -->
+            <div class="flex items-center gap-4">
+                <!-- Hamburger Menu (Mobile) -->
+                 <button 
+                id="mobile-menu-button"
+                class="md:hidden p-2 rounded-lg hover:bg-gray-100"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+
+        
+                <!-- User Button -->
+                <button class="btn rounded-full px-3 bg-white border border-gray-200 hover:bg-gray-50">
+                    <img class="w-5" src="https://img.icons8.com/?size=100&id=82751&format=png&color=000000" alt="Cart">
+                </button>
+            </div>
+        
+            <!-- Mobile Menu -->
+            <div  id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-white shadow-lg py-4 hidden">
+            <div class="flex flex-col items-center gap-4 text-lg font-semibold">
+                <a href="#" class="hover:text-gray-600">Home</a>
+                <a href="#" class="hover:text-gray-600">Shop</a>
+                <a href="#" class="hover:text-gray-600">Contact</a>
+            </div>
+            </div>
+        </nav>
+    </header>
+
+
+    
+    <script src="scripts/main.js"></script>
+</body>
+</html>
