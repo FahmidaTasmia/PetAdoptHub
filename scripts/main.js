@@ -116,7 +116,7 @@ const displayAllPets =(pets)=>{
         </div>
 
         <div class="mt-4 flex justify-end gap-2">
-            <button class="btn btn-sm btn-ghost text-teal-600 hover:bg-teal-50">
+            <button onclick="updateSideGallery('${pet.image}')" class="btn btn-sm btn-ghost text-teal-600 hover:bg-teal-50">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                 </svg>
@@ -132,6 +132,7 @@ const displayAllPets =(pets)=>{
  })
 };
 
+// handle Sort Change By Price
 const handleSortChangeByPrice=(selectElement)=>{
     const selectedValue = selectElement.value;
 
@@ -146,6 +147,23 @@ const handleSortChangeByPrice=(selectElement)=>{
     
     selectElement.selectIndex = 0;
 };
+
+// upDate Side gallery
+
+const updateSideGallery =(imageUrl)=>{
+    const sideGallery = document.getElementById('side-gallery');
+    //check if the image already exists in the gallery 
+    if([...sideGallery.children].some(img => img.src === imageUrl)){
+        return ; //if exists, don't add duplicate
+    }
+
+    //create image element
+
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    imageElement.className = "w-full h-auto rounded-lg shadow-md transition-transform duration-300 hover:scale-105";
+    sideGallery.appendChild(imageElement);
+}
 
 
 
