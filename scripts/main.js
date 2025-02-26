@@ -18,6 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//active btn functionality
+
+const removeActiveClass = () =>{
+    const buttons = document.getElementsByClassName("category-btn");
+    for(let btn of buttons){
+        btn.classList.remove('active');
+    }
+}
+
 //load categories
 
 const loadCategories =()=>{
@@ -37,7 +46,7 @@ const displayCategories = (categories) => {
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'flex'; // Ensure proper grid behavior
         buttonContainer.innerHTML = `
-            <button onclick="loadCategoriesPet('${pet.category}')" class="w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-xl hover:rounded-full border border-gray-200 hover:border-teal-600 hover:bg-teal-50 transition-all duration-300 shadow-sm hover:shadow-md group">
+            <button id ="btn-${pet.category}" onclick="loadCategoriesPet('${pet.category}')" class="category-btn w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-xl hover:rounded-full border border-gray-200 hover:border-teal-600 hover:bg-teal-50 transition-all duration-300 shadow-sm hover:shadow-md group">
                 <img class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 object-contain transition-all duration-300 group-hover:scale-110" 
                      src="${pet.category_icon}" 
                      alt="${pet.category} icon">
@@ -57,7 +66,10 @@ const loadCategoriesPet = (categoryId) => {
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryId}`)
     .then(res => res.json())
     .then(data => {
-        
+        removeActiveClass();
+        const activeBtn = document.getElementById(`btn-${categoryId}`);
+
+        activeBtn.classList.add('active');
         displayAllPets(data.data);
     })
     .catch(error => console.log(error));
@@ -151,6 +163,9 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
             </button>
             <button class="btn bg-teal-600 hover:bg-teal-700 text-white px-4">
                 Adopt Now
+            </button>
+            <button class="btn bg-teal-600 hover:bg-teal-700 text-white px-4">
+                Details
             </button>
         </div>
     </div>
