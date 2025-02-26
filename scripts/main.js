@@ -37,7 +37,7 @@ const displayCategories = (categories) => {
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'flex'; // Ensure proper grid behavior
         buttonContainer.innerHTML = `
-            <button class="w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-xl hover:rounded-full border border-gray-200 hover:border-teal-600 hover:bg-teal-50 transition-all duration-300 shadow-sm hover:shadow-md group">
+            <button onclick="loadCategoriesPet('${pet.category}')" class="w-full flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-xl hover:rounded-full border border-gray-200 hover:border-teal-600 hover:bg-teal-50 transition-all duration-300 shadow-sm hover:shadow-md group">
                 <img class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0 object-contain transition-all duration-300 group-hover:scale-110" 
                      src="${pet.category_icon}" 
                      alt="${pet.category} icon">
@@ -48,6 +48,19 @@ const displayCategories = (categories) => {
         `;
         categoryContainer.appendChild(buttonContainer);
     });
+};
+
+// Fetch Pets by Category
+
+// Fetch Pets by Category
+const loadCategoriesPet = (categoryId) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryId}`)
+    .then(res => res.json())
+    .then(data => {
+        
+        displayAllPets(data.data);
+    })
+    .catch(error => console.log(error));
 };
 
 //load all pets
@@ -74,8 +87,23 @@ const loadAllPets =()=>{
 const displayAllPets =(pets)=>{
     const petContainer = document.getElementById('pet-cards');
     petContainer.innerHTML = '';
+    if(pets.length === 0){
+        petContainer.classList.remove("grid");
+        petContainer.innerHTML = `
+        <div class ="min-h-[500px] flex flex-col justify-center items-center shadow-lg rounded-lg bg-gray-100 p-20">
+        <img src ="images/error.webp"/>
+        <h2 class ="md:text-4xl text-2xl font-extrabold text-center my-5">No Information Available</h2>
+        <p class="text-center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
+its layout. The point of using Lorem Ipsum is that it has a.</p>
+        </div>
+        `
+    }
+
+    else{
+        petContainer.classList.add("grid")
+    }
  pets.forEach ((pet)=>{
-    console.log(pet)
+    // console.log(pet)
     const card = document.createElement('div');
     card.className = 'card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300';
     card.innerHTML = `
