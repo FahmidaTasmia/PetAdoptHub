@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//
+function scrollToShop() {
+    document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+}
+
+
+
 //active btn functionality
 
 const removeActiveClass = () =>{
