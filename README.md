@@ -53,4 +53,4 @@ pet-adoption-hub/
 
 
 Live Demo 🌐
-View Live Project
+https://petadpotthub.netlify.app/
