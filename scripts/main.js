@@ -27,7 +27,7 @@ const removeActiveClass = () =>{
     }
 }
 
-//load categories
+//Fetch categories
 
 const loadCategories =()=>{
     fetch('https://openapi.programming-hero.com/api/peddy/categories')
@@ -59,7 +59,6 @@ const displayCategories = (categories) => {
     });
 };
 
-// Fetch Pets by Category
 
 // Fetch Pets by Category
 const loadCategoriesPet = (categoryId) => {
@@ -75,7 +74,41 @@ const loadCategoriesPet = (categoryId) => {
     .catch(error => console.log(error));
 };
 
-//load all pets
+//fetch pets detail
+
+const loadDetails = async (pet) => {
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${pet}`);
+        const data = await res.json();
+        displayDetails(data.petData);
+    } catch (error) {
+        console.error('Error loading details:', error);
+    }
+};
+
+const displayDetails = (petData) =>{
+    // console.log(petData)
+    const detailsContainer = document.getElementById('modal-content');
+    detailsContainer.innerHTML =`
+    <img class="object-cover rounded-lg w-full" src =${petData.image}/>
+   
+    <div class="flex justify-between my-5">
+            <h3 class="text-xl font-semibold text-teal-600">${petData.pet_name}</h3>
+            <span class="badge px-3 py-2  ${petData.gender === 'Male' ? 'bg-blue-100 text-blue-800' : 'bg-pink-100 text-pink-800'} rounded-full text-sm">
+                ${petData.gender}
+            </span>
+        </div>
+
+   <p class="text-teal-800">Vaccinated: <span class="font-medium">${petData.vaccinated_status}</span></p>
+
+    <p class="text-sm text-justify">${petData.pet_details}</p>
+    `
+
+    document.getElementById('customModal').showModal();
+
+}
+
+//fetch all pets
 
 let allPets = [];
 let ascendingOrder = true;
@@ -106,7 +139,7 @@ const displayAllPets =(pets)=>{
         <img src ="images/error.webp"/>
         <h2 class ="md:text-4xl text-2xl font-extrabold text-center my-5">No Information Available</h2>
         <p class="text-center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
-its layout. The point of using Lorem Ipsum is that it has a.</p>
+                its layout. The point of using Lorem Ipsum is that it has a.</p>
         </div>
         `
     }
@@ -161,11 +194,11 @@ its layout. The point of using Lorem Ipsum is that it has a.</p>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                 </svg>
             </button>
-            <button class="btn bg-teal-600 hover:bg-teal-700 text-white px-4">
-                Adopt Now
+           <button onclick="loadDetails(${pet.petId})" class="btn btn-sm bg-teal-600 hover:bg-teal-700 text-white px-4">
+                details
             </button>
-            <button class="btn bg-teal-600 hover:bg-teal-700 text-white px-4">
-                Details
+            <button class="btn btn-sm bg-teal-600 hover:bg-teal-700 text-white px-4">
+                Adopt Now
             </button>
         </div>
     </div>
@@ -210,5 +243,9 @@ const updateSideGallery =(imageUrl)=>{
 
 
 
+
+
+
 loadCategories();
 loadAllPets();
+

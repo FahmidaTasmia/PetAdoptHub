@@ -140,6 +140,33 @@
                 </div>
             </div>
         </section>
+        
+
+    
+        <!-- Pet Details Modal -->
+         <!-- Button to Open Modal -->
+        <button id="showModalData" class="hidden"></button>
+
+        <!-- Modal -->
+        <dialog id="customModal" class="modal bg-black/30 fixed inset-0 flex justify-center items-center">
+            <div class="modal-box bg-white p-6 rounded-xl shadow-lg max-w-md w-full relative">
+               
+                <!-- Modal Content -->
+                <div id="modal-content" class=" space-y-4">
+                    <!-- Data will be injected here dynamically -->
+                </div>
+                
+                <!-- close Modal -->
+                <form method="dialog">
+                    <div class="flex justify-end space-y-4 mt-4">
+                        <button class="btn text-sm md:text-base bg-[#0e7a81] text-white hover:bg-[#0b5f65]  transition-all duration-300 transform hover:scale-105">Close</button>
+                    </div>
+                  </form>
+                
+                
+                </div>
+            </div>
+        </dialog>
     </main>
 
 
